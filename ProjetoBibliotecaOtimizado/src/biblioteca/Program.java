@@ -14,7 +14,9 @@ public class Program {
 	        biblioteca.addlivro(new Livro("Harry Potter e a Câmara Secreta", "J.K. Rowling", "Editora E", "1998", 320, "Capa dura", "Fantasia"));
 	        biblioteca.addlivro(new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Editora F", "1954", 1178, "Brochura", "Fantasia"));
 	        biblioteca.addlivro(new Livro("O Quinze", "Rachel de Queiroz", "Jose Olympio", "1930", 160, "Capa Mole", "Drama"));
-	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade", "Livros do Brasil", "1928", 192, "Capa Dura", "Ficção"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade1", "Livros do Brasil1", "1928", 192, "Capa Dura", "Ficção"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", 192, "Capa Dura", "Ficção"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", 192, "Capa Dura", "Ficção"));
 	        
 	        biblioteca.addlivro(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Editora L", "1954", 423, "Fantasia", "Digital", "EPUB", 2.89));
 	        biblioteca.addlivro(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Rocco", "1997", 256, "Fantasia", "Digital", "PDF", 1.8 ));
@@ -161,7 +163,7 @@ public class Program {
 	                biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
 	                
 	            }else if (opcao == 6) {
-	                System.out.println("Digite o atributo pelo qual deseja procurar (id, titulo, autor, editora, ano, paginas, formato, genero):");
+	                System.out.println("Digite o atributo pelo qual deseja procurar (titulo, autor, editora, ano, paginas, formato, genero):");
 	                String atributo = read.nextLine();
 	                System.out.println("Digite o valor do atributo:");
 	                String valor = read.nextLine();
