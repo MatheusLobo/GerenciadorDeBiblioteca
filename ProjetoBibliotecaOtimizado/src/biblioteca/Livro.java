@@ -10,8 +10,8 @@ public class Livro {
  private String editora; // Editora do livro
  private String ano_Publi; // Ano de publicação do livro
  private int numero_paginas; // Número de páginas do livro
- private String formato;
- private String genero;
+ private String formato; // Formato do livro digital
+ private String genero; // Gênero do livro digital
 
  // Construtor da classe Livro
  public Livro(String titulo, String autor, String editora, String ano_Publi, int numero_paginas, String formato, String genero) {
@@ -20,12 +20,12 @@ public class Livro {
      setEditora(editora); // Atribui a editora fornecida ao atributo "editora"
      setAnoPubli(ano_Publi); // Atribui o ano de publicação fornecido ao atributo "ano_Publi"
      setNumeroPaginas(numero_paginas); // Atribui o número de páginas fornecido ao atributo "numero_paginas"
-     setFormato(formato);
-     setGenero(genero);
+     setFormato(formato); // Atribui o formato fornecido ao atributo "formato"
+     setGenero(genero); // Atribui o gênero fornecido ao atributo "genero"
  }
 
- public void setId(int id) {
-     this.id = id;
+ public void setId(int id) {// Método setter para definir o  Id do livro
+     this.id = id;// Atribui o valor fornecido ao atributo "id"
  }
 
  // Método getter para obter o ID do livro
@@ -82,19 +82,23 @@ public class Livro {
  public int getNumeroPaginas() {
      return numero_paginas; // Retorna o valor do atributo "numero_paginas"
  }
+//Retorna o formato do livro digital
 public String getFormato() {
-    return formato;
- }
+  return formato;
+}
 
+//Define o formato do livro digital
 public void setFormato(String formato) {
-   this.formato = formato;
- }
+  this.formato = formato;
+}
 
+//Retorna o gênero do livro digital
 public String getGenero() {
-   return genero;
- }
+  return genero;
+}
 
+//Define o gênero do livro digital
 public void setGenero(String genero) {
-   this.genero = genero;
- }
+  this.genero = genero;
+}
 }
