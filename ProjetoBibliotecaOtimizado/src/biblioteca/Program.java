@@ -9,23 +9,23 @@ public class Program {
 		// Criando uma instância da Biblioteca
 		   Biblioteca biblioteca = new Biblioteca();
 		// Criando uma instância da Biblioteca (classe pai)
-		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Aleph", "1945", 150, "Ficção"));
-	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "T. Egerton", "1813", 400,"Romance"));
-	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Gallimard", "1943", 100,"Infantil"));
-	        biblioteca.addlivro(new Livro("Cem Anos de Solidão", "Gabriel García Márquez", "Sudamericana", "1967", 368,"Romance"));
-	        biblioteca.addlivro(new Livro("Harry Potter e a Câmara Secreta", "J.K. Rowling", "Bloomsbury", "1998", 320,"Fantasia"));
-	        biblioteca.addlivro(new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Allen Unwin", "1954", 1178,"Fantasia"));
-	        biblioteca.addlivro(new Livro("O Quinze", "Rachel de Queiroz", "Jose Olympio", "1930", 160, "Drama"));
-	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade1", "Livros do Brasil1", "1928", 192,"Ficção"));
-	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", 192, "Ficção"));
-	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", 192,"Ficção"));
+		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Aleph", "1945", "150", "Ficção"));
+	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "T. Egerton", "1813", "400","Romance"));
+	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Gallimard", "1943", "100","Infantil"));
+	        biblioteca.addlivro(new Livro("Cem Anos de Solidão", "Gabriel García Márquez", "Sudamericana", "1967", "368","Romance"));
+	        biblioteca.addlivro(new Livro("Harry Potter e a Câmara Secreta", "J.K. Rowling", "Bloomsbury", "1998", "320","Fantasia"));
+	        biblioteca.addlivro(new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Allen Unwin", "1954", "1178","Fantasia"));
+	        biblioteca.addlivro(new Livro("O Quinze", "Rachel de Queiroz", "Jose Olympio", "1930", "160", "Drama"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade1", "Livros do Brasil1", "1928", "192","Ficção"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", "192", "Ficção"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", "192","Ficção"));
 	     // Adicionando livros digitais à biblioteca (classe filha)
-	        biblioteca.addLivroDigital(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Allen Unwin", "1954", 423, "Fantasia", "EPUB", 2.89));
-	        biblioteca.addLivroDigital(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Bloomsbury", "1997", 256, "Fantasia", "Digital", 1.8));
-	        biblioteca.addLivroDigital(new LivroDigital("Percy Jackson e o Ladrão de Raios", "Rick Riordan", "Intrínseca", "2005", 377, "Fantasia", "EPUB", 3.2));
-	        biblioteca.addLivroDigital(new LivroDigital("A Culpa é das Estrelas", "John Green", "Intrínseca", "2012", 313, "Romance", "Digital", 1.2));
-	        biblioteca.addLivroDigital(new LivroDigital("A Menina que Roubava Livros", "Markus Zusak", "Nova Fronteira", "2005", 480, "Romance", "Digital", 2.5));
-	        biblioteca.addLivroDigital(new LivroDigital("1984", "George Orwell", "Secker Warburg", "1949", 368, "Ficção", "Digital", 1.6));
+	        biblioteca.addLivroDigital(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Allen Unwin", "1954", "423", "Fantasia", "EPUB", "2.89"));
+	        biblioteca.addLivroDigital(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Bloomsbury", "1997", "256", "Fantasia", "Digital", "1.8"));
+	        biblioteca.addLivroDigital(new LivroDigital("Percy Jackson e o Ladrão de Raios", "Rick Riordan", "Intrínseca", "2005", "377", "Fantasia", "EPUB", "3.2"));
+	        biblioteca.addLivroDigital(new LivroDigital("A Culpa é das Estrelas", "John Green", "Intrínseca", "2012", "313", "Romance", "Digital", "1.2"));
+	        biblioteca.addLivroDigital(new LivroDigital("A Menina que Roubava Livros", "Markus Zusak", "Nova Fronteira", "2005", "480", "Romance", "Digital", "2.5"));
+	        biblioteca.addLivroDigital(new LivroDigital("1984", "George Orwell", "Secker Warburg", "1949", "368", "Ficção", "Digital", "1.6"));
 
 	        System.out.println("Bem-vindo à Biblioteca Java 2023 Unifacs\n");
 	        // Criando uma instância do Scanner para ler a entrada do usuário
@@ -43,8 +43,8 @@ public class Program {
 	            System.out.println("7 - Sair\n");
 	        
 	            // Lendo a opção escolhida pelo usuário
-	            String opcaoString = read.nextLine();
-	            int opcao = Integer.parseInt(opcaoString);
+	           
+	            int opcao = read.nextInt();
 
 	            if (opcao == 1) {
 	            	 // Registro de um novo livro
@@ -61,27 +61,23 @@ public class Program {
 	                String ano_Publi = read.nextLine();
 
 	                System.out.println("Digite o número de páginas:");
-	                int numero_paginas = Integer.parseInt(read.nextLine());
+	                String numero_paginas = read.nextLine();
 
-	                System.out.println("Digite o formato do livro (Capa Dura, Capa Mole, Digital):");
-	                String formato = read.nextLine();
-	                
-	                String formatoDoArquivo = "";
-	                	if(formato.equalsIgnoreCase("Digital")) {
-	                		System.out.println("Qual tipo do arquivo (PDF, EPUB, MOBI)");
-	                		formatoDoArquivo = read.nextLine();
-	                	}
-
+	             
 	                System.out.println("Digite o gênero do livro:");
 	                String genero = read.nextLine();
-
+	                
+	                System.out.println("Digite o formato do livro (Capa Dura, Capa Mole, Digital, Epub):");
+	                String formato = read.nextLine();
+	      
 	                Livro novoLivroFisico;
 	                LivroDigital novoLivroDigital;
-	                Random random = new Random();
-	                double tamanhoDoArquivo = random.nextDouble(3.75);
+	                
+	                System.out.println("Digite o tamanho do arquivo:");
+	                String tamanhoDoArquivo = read.nextLine();
 	                
 	                if (formato.equalsIgnoreCase("Digital")) {
-	                	novoLivroDigital = new LivroDigital(titulo, autor, editora, ano_Publi, numero_paginas, genero ,formatoDoArquivo, tamanhoDoArquivo);
+	                	novoLivroDigital = new LivroDigital(titulo, autor, editora, ano_Publi, numero_paginas, genero , formato, tamanhoDoArquivo);
 	                	 biblioteca.addLivroDigital(novoLivroDigital);
 	                	 System.out.println("Livro Adicionado com sucesso");
 	                } else {
@@ -135,9 +131,9 @@ public class Program {
 	                    for (Livro livro : livrosEncontrados) {
 	                        if (livro instanceof LivroDigital) {
 	                            LivroDigital livroDigital = (LivroDigital) livro;
-	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15d%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), livroDigital.getFormatoD());
+	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15s%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), livroDigital.getFormatoD());
 	                        } else {
-	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15d%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "-");
+	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15s%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "-");
 	                        }
 	                    }
 	                    System.out.println();
@@ -155,19 +151,48 @@ public class Program {
 	                }
 	                
 	            } else if (opcao == 5) {
-	            	// Editar informações de um livro
-	                System.out.println("Lista de Livros:");
-	                biblioteca.listarLivros();
-	                System.out.println("\nDigite o ID do livro que deseja editar:\n");
-	                int idLivro = Integer.parseInt(read.nextLine());
+	            	
+	            	System.out.println("Lista de Livros:");
+	            	biblioteca.listarLivros();
 
-	                System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, paginas, formato, genero):");
-	                String opcaoEdicao = read.nextLine();
+	            	System.out.println("\nDigite o ID do livro que deseja editar:");
+	            	int idLivro = read.nextInt();
 
-	                System.out.println("Digite o novo valor:");
-	                String novoValor = read.nextLine();
+	            	System.out.println("Digite 's' se o livro for digital ou 'n' caso contrário:");
+	            	String opcaoDigital = read.next();
 
-	                biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
+	            	if (opcaoDigital.equalsIgnoreCase("s")) {
+	            	    System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, genero, formato, tamanho):");
+	            	    String opcaoEdicao = read.next();
+
+	            	    System.out.println("Digite o novo valor:");
+	            	    String novoValor = read.nextLine();
+	            	    novoValor = read.nextLine();
+
+	            	    LivroDigital livroDigital = (LivroDigital) biblioteca.getLivroById(idLivro);
+	            	    if (livroDigital != null) {
+	            	        biblioteca.editarLivroDigital(idLivro, opcaoEdicao, novoValor);
+	            	    } else {
+	            	        System.out.println("Livro digital não encontrado.");
+	            	    }
+	            	} else if (opcaoDigital.equalsIgnoreCase("n")) {
+	            	    System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, paginas, genero):");
+	            	    String opcaoEdicao = read.next();
+
+	            	    System.out.println("Digite o novo valor:");
+	            	    String novoValor = read.nextLine();
+	            	    novoValor = read.nextLine();
+
+	            	    Livro livro = biblioteca.getLivroById(idLivro);
+	            	    if (livro != null) {
+	            	        biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
+	            	    } else {
+	            	        System.out.println("Livro não encontrado.");
+	            	    }
+	            	} else {
+	            	    System.out.println("Opção inválida.");
+	            	}
+	              
 	                
 	            }else if (opcao == 6) {
 	            	 // Listar livros por atributo

@@ -9,11 +9,11 @@ public class Livro {
   String autor; // Autor do livro
   String editora; // Editora do livro
   String ano_Publi; // Ano de publicação do livro
-  int numero_paginas; // Número de páginas do livro
+  String numero_paginas; // Número de páginas do livro
   String genero; // Gênero do livro digital
 
  // Construtor da classe Livro
- public Livro(String titulo, String autor, String editora, String ano_Publi, int numero_paginas, String genero) {
+ public Livro(String titulo, String autor, String editora, String ano_Publi, String numero_paginas, String genero) {
      setTitulo(titulo); // Atribui o título fornecido ao atributo "titulo"
      setAutor(autor); // Atribui o autor fornecido ao atributo "autor"
      setEditora(editora); // Atribui a editora fornecida ao atributo "editora"
@@ -53,7 +53,7 @@ public class Livro {
  }
 
  // Método setter para definir o número de páginas do livro
- public void setNumeroPaginas(int numero_paginas) {
+ public void setNumeroPaginas(String numero_paginas) {
      this.numero_paginas = numero_paginas; // Atribui o valor fornecido ao atributo "numero_paginas"
  }
 
@@ -78,7 +78,7 @@ public class Livro {
  }
 
  // Método getter para obter o número de páginas do livro
- public int getNumeroPaginas() {
+ public String getNumeroPaginas() {
      return numero_paginas; // Retorna o valor do atributo "numero_paginas"
  }
 
