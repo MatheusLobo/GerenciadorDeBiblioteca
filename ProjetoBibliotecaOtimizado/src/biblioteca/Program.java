@@ -9,23 +9,23 @@ public class Program {
 		// Criando uma instância da Biblioteca
 		   Biblioteca biblioteca = new Biblioteca();
 		// Criando uma instância da Biblioteca (classe pai)
-		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Editora A", "1945", 150, "Ficção"));
-	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "Editora B", "1813", 400,"Romance"));
-	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Editora C", "1943", 100,"Infantil"));
-	        biblioteca.addlivro(new Livro("Cem Anos de Solidão", "Gabriel García Márquez", "Editora D", "1967", 368,"Romance"));
-	        biblioteca.addlivro(new Livro("Harry Potter e a Câmara Secreta", "J.K. Rowling", "Editora E", "1998", 320,"Fantasia"));
-	        biblioteca.addlivro(new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Editora F", "1954", 1178,"Fantasia"));
+		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Aleph", "1945", 150, "Ficção"));
+	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "T. Egerton", "1813", 400,"Romance"));
+	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Gallimard", "1943", 100,"Infantil"));
+	        biblioteca.addlivro(new Livro("Cem Anos de Solidão", "Gabriel García Márquez", "Sudamericana", "1967", 368,"Romance"));
+	        biblioteca.addlivro(new Livro("Harry Potter e a Câmara Secreta", "J.K. Rowling", "Bloomsbury", "1998", 320,"Fantasia"));
+	        biblioteca.addlivro(new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Allen Unwin", "1954", 1178,"Fantasia"));
 	        biblioteca.addlivro(new Livro("O Quinze", "Rachel de Queiroz", "Jose Olympio", "1930", 160, "Drama"));
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade1", "Livros do Brasil1", "1928", 192,"Ficção"));
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", 192, "Ficção"));
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", 192,"Ficção"));
 	     // Adicionando livros digitais à biblioteca (classe filha)
-	        biblioteca.addLivroDigital(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Editora L", "1954", 423, "Fantasia", "EPUB", 2.89));
-	        biblioteca.addLivroDigital(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Rocco", "1997", 256, "Fantasia", "Digital", 1.8));
+	        biblioteca.addLivroDigital(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Allen Unwin", "1954", 423, "Fantasia", "EPUB", 2.89));
+	        biblioteca.addLivroDigital(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Bloomsbury", "1997", 256, "Fantasia", "Digital", 1.8));
 	        biblioteca.addLivroDigital(new LivroDigital("Percy Jackson e o Ladrão de Raios", "Rick Riordan", "Intrínseca", "2005", 377, "Fantasia", "EPUB", 3.2));
 	        biblioteca.addLivroDigital(new LivroDigital("A Culpa é das Estrelas", "John Green", "Intrínseca", "2012", 313, "Romance", "Digital", 1.2));
 	        biblioteca.addLivroDigital(new LivroDigital("A Menina que Roubava Livros", "Markus Zusak", "Nova Fronteira", "2005", 480, "Romance", "Digital", 2.5));
-	        biblioteca.addLivroDigital(new LivroDigital("1984", "George Orwell", "Editora Nacional", "1949", 368, "Ficção", "Digital", 1.6));
+	        biblioteca.addLivroDigital(new LivroDigital("1984", "George Orwell", "Secker Warburg", "1949", 368, "Ficção", "Digital", 1.6));
 
 	        System.out.println("Bem-vindo à Biblioteca Java 2023 Unifacs\n");
 	        // Criando uma instância do Scanner para ler a entrada do usuário
