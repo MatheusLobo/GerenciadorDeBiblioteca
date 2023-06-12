@@ -54,26 +54,18 @@ public int gerarNovoId() {
 /// Método para listar os livros registrados
 public void listarLivros() {
     System.out.println("\nLivros Registrados:\n");
-    System.out.printf("%-6s %-40s %-25s %-25s %-20s %-8s %-8s %-10s %-10s%n",
-            "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Gênero", "Formato", "Tamanho");
+    System.out.printf("%-6s %-40s %-25s %-25s %-20s %-8s %-8s %-10s %-10s%n", "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Gênero", "Formato", "Tamanho");
 
     // Loop para listar os livros físicos
     for (Livro livro : livros) {
-        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10s%n",
-                livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(),
-                livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "-", "-");
+        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "-", "-");
     }
 
     // Loop para listar os livros digitais
     for (LivroDigital livroDigital : livrosDigitais) {
-        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10.2f%n",
-                livroDigital.getId(), livroDigital.getTitulo(), livroDigital.getAutor(), livroDigital.getEditora(),
-                livroDigital.getAnoPubli(), livroDigital.getNumeroPaginas(), livroDigital.getGenero(),
-                livroDigital.getFormato(), livroDigital.getTamanho());
+        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10.2f%n", livroDigital.getId(), livroDigital.getTitulo(), livroDigital.getAutor(), livroDigital.getEditora(), livroDigital.getAnoPubli(), livroDigital.getNumeroPaginas(), livroDigital.getGenero(), livroDigital.getFormato(), livroDigital.getTamanho());
     }
 }
-
-
 
 public List<Livro> buscarLivro(String titulo) { //Busca livros com base em um título fornecido.
     List<Livro> livrosEncontrados = new ArrayList<>();
@@ -172,77 +164,136 @@ public void editarLivro(int id, String opcao, String novoValor) {
 	  System.out.println("Livro não encontrado."); // Livro com o ID fornecido não encontrado
 	}
 
-//Lista os livros registrados com base no atributo e valor de busca fornecidos.
 public void listaratr(String atributo, String valorBusca) {
-    // Filtrar os livros com base no atributo fornecido
     List<Livro> livrosEncontrados = new ArrayList<>();
     List<LivroDigital> livrosDigiEncontrados = new ArrayList<>();
 
-    switch (atributo.toLowerCase()) { // Verifica o atributo fornecido
+    switch (atributo.toLowerCase()) {
         case "titulo":
-            livrosEncontrados = livros.stream()
-                    .filter(livro -> livro.getTitulo().toLowerCase().contains(valorBusca.toLowerCase()))
-                    .collect(Collectors.toList()); // Filtra os livros pelo título que contém o valor de busca
+            for (Livro livro : livros) {
+                if (livro.getTitulo().toLowerCase().contains(valorBusca.toLowerCase())) {
+                    livrosEncontrados.add(livro);
+                }
+            }
             break;
         case "autor":
-            livrosEncontrados = livros.stream()
-                    .filter(livro -> livro.getAutor().toLowerCase().contains(valorBusca.toLowerCase()))
-                    .collect(Collectors.toList()); // Filtra os livros pelo autor que contém o valor de busca
+            for (Livro livro : livros) {
+                if (livro.getAutor().toLowerCase().contains(valorBusca.toLowerCase())) {
+                    livrosEncontrados.add(livro);
+                }
+            }
             break;
         case "editora":
-            livrosEncontrados = livros.stream()
-                    .filter(livro -> livro.getEditora().toLowerCase().contains(valorBusca.toLowerCase()))
-                    .collect(Collectors.toList()); // Filtra os livros pela editora que contém o valor de busca
+            for (Livro livro : livros) {
+                if (livro.getEditora().toLowerCase().contains(valorBusca.toLowerCase())) {
+                    livrosEncontrados.add(livro);
+                }
+            }
             break;
         case "ano":
-            livrosEncontrados = livros.stream()
-                    .filter(livro -> livro.getAnoPubli().equalsIgnoreCase(valorBusca))
-                    .collect(Collectors.toList()); // Filtra os livros pelo ano de publicação igual ao valor de busca
+            for (Livro livro : livros) {
+                if (livro.getAnoPubli().equalsIgnoreCase(valorBusca)) {
+                    livrosEncontrados.add(livro);
+                }
+            }
             break;
         case "paginas":
-            livrosEncontrados = livros.stream()
-                    .filter(livro -> livro.getNumeroPaginas() == Integer.parseInt(valorBusca))
-                    .collect(Collectors.toList()); // Filtra os livros pelo número de páginas igual ao valor de busca
+            int numPaginas = Integer.parseInt(valorBusca);
+            for (Livro livro : livros) {
+                if (livro.getNumeroPaginas() == numPaginas) {
+                    livrosEncontrados.add(livro);
+                }
+            }
             break;
         case "formato":
-            livrosEncontrados = livros.stream()
-                    .filter(livro -> livro.getFormato().toLowerCase().contains(valorBusca.toLowerCase()))
-                    .collect(Collectors.toList()); // Filtra os livros pelo formato que contém o valor de busca
-            livrosDigiEncontrados = livrosDigitais.stream()
-                    .filter(livroDigital -> livroDigital.getFormato().toLowerCase().contains(valorBusca.toLowerCase()))
-                    .collect(Collectors.toList()); // Filtra os livros digitais pelo formato que contém o valor de busca
+            for (Livro livro : livros) {
+                if (livro.getFormato().toLowerCase().contains(valorBusca.toLowerCase())) {
+                    livrosEncontrados.add(livro);
+                }
+            }
+            for (LivroDigital livroDigital : livrosDigitais) {
+                if (livroDigital.getFormato().toLowerCase().contains(valorBusca.toLowerCase())) {
+                    livrosDigiEncontrados.add(livroDigital);
+                }
+            }
             break;
         case "genero":
-            livrosEncontrados = livros.stream()
-                    .filter(livro -> livro.getGenero().toLowerCase().contains(valorBusca.toLowerCase()))
-                    .collect(Collectors.toList()); // Filtra os livros pelo gênero que contém o valor de busca
-            livrosDigiEncontrados = livrosDigitais.stream()
-                    .filter(livroDigital -> livroDigital.getGenero().toLowerCase().contains(valorBusca.toLowerCase()))
-                    .collect(Collectors.toList()); // Filtra os livros digitais pelo gênero que contém o valor de busca
+            for (Livro livro : livros) {
+                if (livro.getGenero().toLowerCase().contains(valorBusca.toLowerCase())) {
+                    livrosEncontrados.add(livro);
+                }
+            }
+            for (LivroDigital livroDigital : livrosDigitais) {
+                if (livroDigital.getGenero().toLowerCase().contains(valorBusca.toLowerCase())) {
+                    livrosDigiEncontrados.add(livroDigital);
+                }
+            }
             break;
         default:
-            System.out.println("Atributo inválido."); // Atributo inválido
+            System.out.println("Atributo inválido.");
             return;
     }
 
- // Imprimir a lista de livros encontrados
+    // Imprimir a lista de livros encontrados
     System.out.println("\nLivros Registrados (Atributo: " + atributo + "):\n");
-    System.out.printf("%-6s %-40s %-25s %-25s %-20s %-8s %-8s %-10s %-10s%n",
-            "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Gênero", "Formato", "Tamanho");
+    System.out.printf("%-6s %-40s %-25s %-25s %-20s %-8s %-8s %-10s %-10s%n", "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Gênero", "Formato", "Tamanho");
 
-    // Loop para imprimir os livros encontrados
     for (Livro livro : livrosEncontrados) {
-        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10s%n",
-                livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(),
-                livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "", "");
+        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "", "");
     }
 
-    // Loop para imprimir os livros digitais encontrados
     for (LivroDigital livroDigital : livrosDigiEncontrados) {
-        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10.2f%n",
-                livroDigital.getId(), livroDigital.getTitulo(), livroDigital.getAutor(), livroDigital.getEditora(),
-                livroDigital.getAnoPubli(), livroDigital.getNumeroPaginas(), livroDigital.getGenero(),
-                livroDigital.getFormato(), livroDigital.getTamanho());
+        System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10.2f%n", livroDigital.getId(), livroDigital.getTitulo(), livroDigital.getAutor(), livroDigital.getEditora(), livroDigital.getAnoPubli(), livroDigital.getNumeroPaginas(), livroDigital.getGenero(), livroDigital.getFormato(), livroDigital.getTamanho());
     }
 }
+
+/*Lista os livros registrados com base no atributo e valor de busca fornecidos.
+public void listaratr(String atributo, String valorBusca) {
+  // Filtrar os livros com base no atributo fornecido
+  List<Livro> livrosEncontrados = new ArrayList<>();
+  List<LivroDigital> livrosDigiEncontrados = new ArrayList<>();
+
+  switch (atributo.toLowerCase()) { // Verifica o atributo fornecido
+      case "titulo":
+          livrosEncontrados = livros.stream().filter(livro -> livro.getTitulo().toLowerCase().contains(valorBusca.toLowerCase())).collect(Collectors.toList()); // Filtra os livros pelo título que contém o valor de busca
+          break;
+      case "autor":
+          livrosEncontrados = livros.stream().filter(livro -> livro.getAutor().toLowerCase().contains(valorBusca.toLowerCase())).collect(Collectors.toList()); // Filtra os livros pelo autor que contém o valor de busca
+          break;
+      case "editora":
+          livrosEncontrados = livros.stream().filter(livro -> livro.getEditora().toLowerCase().contains(valorBusca.toLowerCase())).collect(Collectors.toList()); // Filtra os livros pela editora que contém o valor de busca
+          break;
+      case "ano":
+          livrosEncontrados = livros.stream().filter(livro -> livro.getAnoPubli().equalsIgnoreCase(valorBusca)).collect(Collectors.toList()); // Filtra os livros pelo ano de publicação igual ao valor de busca
+          break;
+      case "paginas":
+          livrosEncontrados = livros.stream().filter(livro -> livro.getNumeroPaginas() == Integer.parseInt(valorBusca)).collect(Collectors.toList()); // Filtra os livros pelo número de páginas igual ao valor de busca
+          break;
+      case "formato":
+          livrosEncontrados = livros.stream().filter(livro -> livro.getFormato().toLowerCase().contains(valorBusca.toLowerCase())).collect(Collectors.toList()); // Filtra os livros pelo formato que contém o valor de busca
+          livrosDigiEncontrados = livrosDigitais.stream().filter(livroDigital -> livroDigital.getFormato().toLowerCase().contains(valorBusca.toLowerCase())).collect(Collectors.toList()); // Filtra os livros digitais pelo formato que contém o valor de busca
+          break;
+      case "genero":
+          livrosEncontrados = livros.stream().filter(livro -> livro.getGenero().toLowerCase().contains(valorBusca.toLowerCase())).collect(Collectors.toList()); // Filtra os livros pelo gênero que contém o valor de busca
+          livrosDigiEncontrados = livrosDigitais.stream().filter(livroDigital -> livroDigital.getGenero().toLowerCase().contains(valorBusca.toLowerCase())).collect(Collectors.toList()); // Filtra os livros digitais pelo gênero que contém o valor de busca
+          break;
+      default:
+          System.out.println("Atributo inválido."); // Atributo inválido
+          return;
+  }
+
+// Imprimir a lista de livros encontrados
+  System.out.println("\nLivros Registrados (Atributo: " + atributo + "):\n");
+  System.out.printf("%-6s %-40s %-25s %-25s %-20s %-8s %-8s %-10s %-10s%n", "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Gênero", "Formato", "Tamanho");
+
+  // Loop para imprimir os livros encontrados
+  for (Livro livro : livrosEncontrados) {
+      System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "", "");
+  }
+
+  // Loop para imprimir os livros digitais encontrados
+  for (LivroDigital livroDigital : livrosDigiEncontrados) {
+      System.out.printf("%-6d %-40s %-25s %-25s %-20s %-8d %-8s %-10s %-10.2f%n", livroDigital.getId(), livroDigital.getTitulo(), livroDigital.getAutor(), livroDigital.getEditora(), livroDigital.getAnoPubli(), livroDigital.getNumeroPaginas(), livroDigital.getGenero(), livroDigital.getFormato(), livroDigital.getTamanho());
+  }
+}*/
 }

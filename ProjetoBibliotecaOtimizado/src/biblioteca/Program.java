@@ -6,7 +6,9 @@ import java.util.Random;
 public class Program {
 
 	public static void main(String[] args) {
+		// Criando uma instância da Biblioteca
 		   Biblioteca biblioteca = new Biblioteca();
+		// Criando uma instância da Biblioteca (classe pai)
 		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Editora A", "1945", 150, "Brochura", "Ficção"));
 	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "Editora B", "1813", 400, "Capa dura", "Romance"));
 	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Editora C", "1943", 100, "Brochura", "Infantil"));
@@ -17,7 +19,7 @@ public class Program {
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade1", "Livros do Brasil1", "1928", 192, "Capa Dura", "Ficção"));
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", 192, "Capa Dura", "Ficção"));
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", 192, "Capa Dura", "Ficção"));
-	        
+	     // Adicionando livros digitais à biblioteca (classe filha)
 	        biblioteca.addlivro(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Editora L", "1954", 423, "Fantasia", "Digital", "EPUB", 2.89));
 	        biblioteca.addlivro(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Rocco", "1997", 256, "Fantasia", "Digital", "PDF", 1.8 ));
 	        biblioteca.addlivro(new LivroDigital("Percy Jackson e o Ladrão de Raios", "Rick Riordan", "Intrínseca", "2005", 377, "Fantasia", "Digital", "EPUB", 3.2 ));
@@ -27,10 +29,11 @@ public class Program {
 	     
 
 	        System.out.println("Bem-vindo à Biblioteca Java 2023 Unifacs\n");
-
+	        // Criando uma instância do Scanner para ler a entrada do usuário
 	        Scanner read = new Scanner(System.in);
-
+	     // Loop principal do programa
 	        while (true) {
+	        	//Menu Principal
 	            System.out.println("\nEscolha uma opção:");
 	            System.out.println("1 - Registrar Livro");
 	            System.out.println("2 - Listar Livros");
@@ -39,11 +42,13 @@ public class Program {
 	            System.out.println("5 - Editar Livro");
 	            System.out.println("6 - Listar Livros por atributo");
 	            System.out.println("7 - Sair\n");
-
+	        
+	            // Lendo a opção escolhida pelo usuário
 	            String opcaoString = read.nextLine();
 	            int opcao = Integer.parseInt(opcaoString);
 
 	            if (opcao == 1) {
+	            	 // Registro de um novo livro
 	                System.out.println("Digite o nome do livro:");
 	                String titulo = read.nextLine();
 
@@ -87,10 +92,12 @@ public class Program {
 	                }
 	           
 	            } else if (opcao == 2) {
+	            	// Listar todos os livros da biblioteca
 	                biblioteca.listarLivros();
 	                System.out.println(" ");
 	                
 	            } else if (opcao == 3) {
+	            	// Buscar um livro pelo título
 	                System.out.println("Digite o título do livro que deseja buscar:");
 	                String tituloBusca = read.nextLine();
 	                List<Livro> livrosEncontrados = biblioteca.buscarLivro(tituloBusca);
@@ -115,6 +122,7 @@ public class Program {
 	                }
 	                
 	            } else if (opcao == 4) {
+	            	// Remover um livro pelo ID
 	                System.out.println("\nDigite o título do livro que deseja remover:");
 	                String tituloBusca = read.nextLine();
 
@@ -149,6 +157,7 @@ public class Program {
 	                }
 	                
 	            } else if (opcao == 5) {
+	            	// Editar informações de um livro
 	                System.out.println("Lista de Livros:");
 	                biblioteca.listarLivros();
 	                System.out.println("\nDigite o ID do livro que deseja editar:\n");
@@ -163,6 +172,7 @@ public class Program {
 	                biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
 	                
 	            }else if (opcao == 6) {
+	            	 // Listar livros por atributo
 	                System.out.println("Digite o atributo pelo qual deseja procurar (titulo, autor, editora, ano, paginas, formato, genero):");
 	                String atributo = read.nextLine();
 	                System.out.println("Digite o valor do atributo:");
@@ -180,5 +190,3 @@ public class Program {
 	    }
 
 }
-
-
