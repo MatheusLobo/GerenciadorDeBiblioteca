@@ -9,24 +9,23 @@ public class Program {
 		// Criando uma instância da Biblioteca
 		   Biblioteca biblioteca = new Biblioteca();
 		// Criando uma instância da Biblioteca (classe pai)
-		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Editora A", "1945", 150, "Brochura", "Ficção"));
-	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "Editora B", "1813", 400, "Capa dura", "Romance"));
-	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Editora C", "1943", 100, "Brochura", "Infantil"));
-	        biblioteca.addlivro(new Livro("Cem Anos de Solidão", "Gabriel García Márquez", "Editora D", "1967", 368, "Brochura", "Romance"));
-	        biblioteca.addlivro(new Livro("Harry Potter e a Câmara Secreta", "J.K. Rowling", "Editora E", "1998", 320, "Capa dura", "Fantasia"));
-	        biblioteca.addlivro(new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Editora F", "1954", 1178, "Brochura", "Fantasia"));
-	        biblioteca.addlivro(new Livro("O Quinze", "Rachel de Queiroz", "Jose Olympio", "1930", 160, "Capa Mole", "Drama"));
-	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade1", "Livros do Brasil1", "1928", 192, "Capa Dura", "Ficção"));
-	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", 192, "Capa Dura", "Ficção"));
-	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", 192, "Capa Dura", "Ficção"));
+		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Editora A", "1945", 150, "Ficção"));
+	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "Editora B", "1813", 400,"Romance"));
+	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Editora C", "1943", 100,"Infantil"));
+	        biblioteca.addlivro(new Livro("Cem Anos de Solidão", "Gabriel García Márquez", "Editora D", "1967", 368,"Romance"));
+	        biblioteca.addlivro(new Livro("Harry Potter e a Câmara Secreta", "J.K. Rowling", "Editora E", "1998", 320,"Fantasia"));
+	        biblioteca.addlivro(new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Editora F", "1954", 1178,"Fantasia"));
+	        biblioteca.addlivro(new Livro("O Quinze", "Rachel de Queiroz", "Jose Olympio", "1930", 160, "Drama"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade1", "Livros do Brasil1", "1928", 192,"Ficção"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", 192, "Ficção"));
+	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", 192,"Ficção"));
 	     // Adicionando livros digitais à biblioteca (classe filha)
-	        biblioteca.addlivro(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Editora L", "1954", 423, "Fantasia", "Digital", "EPUB", 2.89));
-	        biblioteca.addlivro(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Rocco", "1997", 256, "Fantasia", "Digital", "PDF", 1.8 ));
-	        biblioteca.addlivro(new LivroDigital("Percy Jackson e o Ladrão de Raios", "Rick Riordan", "Intrínseca", "2005", 377, "Fantasia", "Digital", "EPUB", 3.2 ));
-	        biblioteca.addlivro(new LivroDigital("A Culpa é das Estrelas", "John Green", "Intrínseca", "2012", 313, "Romance", "Digital", "PDF", 1.2));
-	        biblioteca.addlivro(new LivroDigital("A Menina que Roubava Livros", "Markus Zusak", "Nova Fronteira", "2005", 480, "Romance", "Digital", "MOBI", 2.5));
-	        biblioteca.addlivro(new LivroDigital("1984", "George Orwell", "Editora Nacional", "1949", 368, "Ficção Distópica", "Digital", "EPUB", 1.6));
-	     
+	        biblioteca.addLivroDigital(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Editora L", "1954", 423, "Fantasia", "EPUB", 2.89));
+	        biblioteca.addLivroDigital(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Rocco", "1997", 256, "Fantasia", "Digital", 1.8));
+	        biblioteca.addLivroDigital(new LivroDigital("Percy Jackson e o Ladrão de Raios", "Rick Riordan", "Intrínseca", "2005", 377, "Fantasia", "EPUB", 3.2));
+	        biblioteca.addLivroDigital(new LivroDigital("A Culpa é das Estrelas", "John Green", "Intrínseca", "2012", 313, "Romance", "Digital", 1.2));
+	        biblioteca.addLivroDigital(new LivroDigital("A Menina que Roubava Livros", "Markus Zusak", "Nova Fronteira", "2005", 480, "Romance", "Digital", 2.5));
+	        biblioteca.addLivroDigital(new LivroDigital("1984", "George Orwell", "Editora Nacional", "1949", 368, "Ficção", "Digital", 1.6));
 
 	        System.out.println("Bem-vindo à Biblioteca Java 2023 Unifacs\n");
 	        // Criando uma instância do Scanner para ler a entrada do usuário
@@ -82,11 +81,11 @@ public class Program {
 	                double tamanhoDoArquivo = random.nextDouble(3.75);
 	                
 	                if (formato.equalsIgnoreCase("Digital")) {
-	                	novoLivroDigital = new LivroDigital(titulo, autor, editora, ano_Publi, numero_paginas, formato , genero ,formatoDoArquivo, tamanhoDoArquivo);
+	                	novoLivroDigital = new LivroDigital(titulo, autor, editora, ano_Publi, numero_paginas, genero ,formatoDoArquivo, tamanhoDoArquivo);
 	                	 biblioteca.addLivroDigital(novoLivroDigital);
 	                	 System.out.println("Livro Adicionado com sucesso");
 	                } else {
-	                	novoLivroFisico = new Livro(titulo, autor, editora, ano_Publi, numero_paginas, formato, genero);
+	                	novoLivroFisico = new Livro(titulo, autor, editora, ano_Publi, numero_paginas, genero);
 	                    biblioteca.addlivro(novoLivroFisico);
 	                    System.out.println("Livro Adicionado com sucesso");
 	                }
@@ -113,9 +112,9 @@ public class Program {
 	                        System.out.println("Ano de Publicação: " + livro.getAnoPubli());
 	                        System.out.println("Número de Páginas: " + livro.getNumeroPaginas());
 	                        if (livro instanceof LivroDigital) {
-	                        	LivroDigital livroFisico = (LivroDigital) livro;
-	                            System.out.println("Formato: " + livroFisico.getFormato());
-	                            System.out.println("Gênero: " + livroFisico.getGenero());
+	                        	LivroDigital LivroDigital = (LivroDigital) livro;
+	                            System.out.println("Formato: " + LivroDigital.getFormatoD());
+	                            System.out.println("Tamanho (Mb): " + LivroDigital.getTamanho());
 	                        }
 	                        System.out.println();
 	                    }
@@ -131,19 +130,18 @@ public class Program {
 	                if (livrosEncontrados.isEmpty()) {
 	                    System.out.println("Nenhum livro encontrado com o título informado.\n");
 	                } else {
-	                    System.out.printf("%-6s%-25s%-25s%-25s%-20s%-15s%-15s%s%n", "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Formato", "Gênero");
+	                    System.out.printf("%-6s%-25s%-25s%-25s%-20s%-15s%-15s%s%n", "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Gênero", "Formato");
 
 	                    for (Livro livro : livrosEncontrados) {
-	                        System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15d", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas());
 	                        if (livro instanceof LivroDigital) {
-	                        	LivroDigital livroDigital = (LivroDigital) livro;
-	                            System.out.printf("%-15s%-15s", livroDigital.getFormato(), livroDigital.getGenero());
+	                            LivroDigital livroDigital = (LivroDigital) livro;
+	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15d%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), livroDigital.getFormatoD());
 	                        } else {
-	                            System.out.printf("%-15s%-15s", "-", "-");
+	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15d%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "-");
 	                        }
-	                        System.out.println();
 	                    }
-
+	                    System.out.println();
+	                
 	                    System.out.println("\nDigite o ID do livro que deseja remover:");
 	                    int idRemocao = Integer.parseInt(read.nextLine());
 

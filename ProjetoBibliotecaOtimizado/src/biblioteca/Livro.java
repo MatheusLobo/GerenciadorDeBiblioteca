@@ -4,23 +4,22 @@ package biblioteca;
 
 //Definição da classe Livro
 public class Livro {
- private int id;
- private String titulo; // Título do livro
- private String autor; // Autor do livro
- private String editora; // Editora do livro
- private String ano_Publi; // Ano de publicação do livro
- private int numero_paginas; // Número de páginas do livro
- private String formato; // Formato do livro digital
- private String genero; // Gênero do livro digital
+  int id;
+  String titulo; // Título do livro
+  String autor; // Autor do livro
+  String editora; // Editora do livro
+  String ano_Publi; // Ano de publicação do livro
+  int numero_paginas; // Número de páginas do livro
+  String genero; // Gênero do livro digital
 
  // Construtor da classe Livro
- public Livro(String titulo, String autor, String editora, String ano_Publi, int numero_paginas, String formato, String genero) {
+ public Livro(String titulo, String autor, String editora, String ano_Publi, int numero_paginas, String genero) {
      setTitulo(titulo); // Atribui o título fornecido ao atributo "titulo"
      setAutor(autor); // Atribui o autor fornecido ao atributo "autor"
      setEditora(editora); // Atribui a editora fornecida ao atributo "editora"
      setAnoPubli(ano_Publi); // Atribui o ano de publicação fornecido ao atributo "ano_Publi"
      setNumeroPaginas(numero_paginas); // Atribui o número de páginas fornecido ao atributo "numero_paginas"
-     setFormato(formato); // Atribui o formato fornecido ao atributo "formato"
+     
      setGenero(genero); // Atribui o gênero fornecido ao atributo "genero"
  }
 
@@ -82,15 +81,6 @@ public class Livro {
  public int getNumeroPaginas() {
      return numero_paginas; // Retorna o valor do atributo "numero_paginas"
  }
-//Retorna o formato do livro digital
-public String getFormato() {
-  return formato;
-}
-
-//Define o formato do livro digital
-public void setFormato(String formato) {
-  this.formato = formato;
-}
 
 //Retorna o gênero do livro digital
 public String getGenero() {
