@@ -91,8 +91,7 @@ public List<Livro> buscarLivro(String titulo) {
 
 
 public boolean removerLivro(int id) {
-    Iterator<Livro> iterator = livros.iterator();
-    while (iterator.hasNext()) {
+    for (Iterator<Livro> iterator = livros.iterator(); iterator.hasNext();) {
         Livro livro = iterator.next();
         if (livro.getId() == id) {
             iterator.remove();
@@ -100,9 +99,22 @@ public boolean removerLivro(int id) {
             return true;
         }
     }
+
+    for (Iterator<LivroDigital> digitalIterator = livrosDigitais.iterator(); digitalIterator.hasNext();) {
+        LivroDigital livroDigital = digitalIterator.next();
+        if (livroDigital.getId() == id) {
+            digitalIterator.remove();
+           
+            return true;
+        }
+    }
+
     System.out.println("Livro não removido.");
     return false;
 }
+
+
+
 
 
 public void imprimirLivro(Livro livro) {
