@@ -1,14 +1,14 @@
 package biblioteca;
 
-import java.util.Scanner;
+
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 public class Program {
 
 	public static void main(String[] args) {
-		// Criando uma instância da Biblioteca
 		   Biblioteca biblioteca = new Biblioteca();
-		// Criando uma instância da Biblioteca (classe pai)
+			// Criando uma instância da Biblioteca (classe pai)
 		    biblioteca.addlivro(new Livro("A Revolução dos Bichos", "George Orwell", "Aleph", "1945", "150", "Ficção"));
 	        biblioteca.addlivro(new Livro("Orgulho e Preconceito", "Jane Austen", "T. Egerton", "1813", "400","Romance"));
 	        biblioteca.addlivro(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Gallimard", "1943", "100","Infantil"));
@@ -20,6 +20,7 @@ public class Program {
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade2", "Livros do Brasil2", "1928", "192", "Ficção"));
 	        biblioteca.addlivro(new Livro("Macunaima", "Mário de Andrade3", "Livros do Brasil3", "1928", "192","Ficção"));
 	     // Adicionando livros digitais à biblioteca (classe filha)
+	        biblioteca.addLivroDigital(new LivroDigital("Macunaima", "Mário de Andrade4", "Livros do Brasil5", "1928", "192", "Ficção", "EPUB", "2.89")); 
 	        biblioteca.addLivroDigital(new LivroDigital("O Senhor dos Anéis: A Sociedade do Anel", "J.R.R. Tolkien", "Allen Unwin", "1954", "423", "Fantasia", "EPUB", "2.89"));
 	        biblioteca.addLivroDigital(new LivroDigital("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Bloomsbury", "1997", "256", "Fantasia", "Digital", "1.8"));
 	        biblioteca.addLivroDigital(new LivroDigital("Percy Jackson e o Ladrão de Raios", "Rick Riordan", "Intrínseca", "2005", "377", "Fantasia", "EPUB", "3.2"));
@@ -27,27 +28,26 @@ public class Program {
 	        biblioteca.addLivroDigital(new LivroDigital("A Menina que Roubava Livros", "Markus Zusak", "Nova Fronteira", "2005", "480", "Romance", "Digital", "2.5"));
 	        biblioteca.addLivroDigital(new LivroDigital("1984", "George Orwell", "Secker Warburg", "1949", "368", "Ficção", "Digital", "1.6"));
 
+
 	        System.out.println("Bem-vindo à Biblioteca Java 2023 Unifacs\n");
-	        // Criando uma instância do Scanner para ler a entrada do usuário
+
 	        Scanner read = new Scanner(System.in);
-	     // Loop principal do programa
+
 	        while (true) {
-	        	//Menu Principal
 	            System.out.println("\nEscolha uma opção:");
 	            System.out.println("1 - Registrar Livro");
 	            System.out.println("2 - Listar Livros");
 	            System.out.println("3 - Buscar Livro");
 	            System.out.println("4 - Remover Livro");
 	            System.out.println("5 - Editar Livro");
-	            System.out.println("6 - Listar Livros por atributo");
-	            System.out.println("7 - Sair\n");
-	        
-	            // Lendo a opção escolhida pelo usuário
-	           
-	            int opcao = read.nextInt();
+	            System.out.println("6 - Listar Livros Fisicos por atributo");
+	            System.out.println("7 - Listar Livros Digitais por atributo");
+	            System.out.println("8 - Sair\n");
+
+	            String opcaoString = read.nextLine();
+	            int opcao = Integer.parseInt(opcaoString);
 
 	            if (opcao == 1) {
-	            	 // Registro de um novo livro
 	                System.out.println("Digite o nome do livro:");
 	                String titulo = read.nextLine();
 
@@ -61,23 +61,27 @@ public class Program {
 	                String ano_Publi = read.nextLine();
 
 	                System.out.println("Digite o número de páginas:");
-	                String numero_paginas = read.nextLine();
+	                String numero_paginas  = read.nextLine();
 
-	             
+	                System.out.println("Digite o formato do livro (Capa Dura, Capa Mole, Digital):");
+	                String formato = read.nextLine();
+	                
+	                String formatoDoArquivo = "";
+	                	if(formato.equalsIgnoreCase("Digital")) {
+	                		System.out.println("Qual tipo do arquivo (PDF, EPUB, MOBI)");
+	                		formato = read.nextLine();
+	                	}
+
 	                System.out.println("Digite o gênero do livro:");
 	                String genero = read.nextLine();
-	                
-	                System.out.println("Digite o formato do livro (Capa Dura, Capa Mole, Digital, Epub):");
-	                String formato = read.nextLine();
-	      
+
 	                Livro novoLivroFisico;
 	                LivroDigital novoLivroDigital;
-	                
-	                System.out.println("Digite o tamanho do arquivo:");
-	                String tamanhoDoArquivo = read.nextLine();
+	                Random random = new Random();
+	                String tamanho = read.nextLine();
 	                
 	                if (formato.equalsIgnoreCase("Digital")) {
-	                	novoLivroDigital = new LivroDigital(titulo, autor, editora, ano_Publi, numero_paginas, genero , formato, tamanhoDoArquivo);
+	                	novoLivroDigital = new LivroDigital(titulo, autor, editora, ano_Publi, numero_paginas, genero , formato, tamanho);
 	                	 biblioteca.addLivroDigital(novoLivroDigital);
 	                	 System.out.println("Livro Adicionado com sucesso");
 	                } else {
@@ -87,12 +91,11 @@ public class Program {
 	                }
 	           
 	            } else if (opcao == 2) {
-	            	// Listar todos os livros da biblioteca
+	             	// Listar todos os livros da biblioteca
 	                biblioteca.listarLivros();
 	                System.out.println(" ");
 	                
 	            } else if (opcao == 3) {
-	            	// Buscar um livro pelo título
 	                System.out.println("Digite o título do livro que deseja buscar:");
 	                String tituloBusca = read.nextLine();
 	                List<Livro> livrosEncontrados = biblioteca.buscarLivro(tituloBusca);
@@ -108,16 +111,15 @@ public class Program {
 	                        System.out.println("Ano de Publicação: " + livro.getAnoPubli());
 	                        System.out.println("Número de Páginas: " + livro.getNumeroPaginas());
 	                        if (livro instanceof LivroDigital) {
-	                        	LivroDigital LivroDigital = (LivroDigital) livro;
-	                            System.out.println("Formato: " + LivroDigital.getFormatoD());
-	                            System.out.println("Tamanho (Mb): " + LivroDigital.getTamanho());
+	                        	LivroDigital livroDigital = (LivroDigital) livro;
+	                            System.out.println("Formato: " + livroDigital.getFormato());
+	                            System.out.println("Gênero: " + livroDigital.getGenero());
 	                        }
 	                        System.out.println();
 	                    }
 	                }
 	                
 	            } else if (opcao == 4) {
-	            	// Remover um livro pelo ID
 	                System.out.println("\nDigite o título do livro que deseja remover:");
 	                String tituloBusca = read.nextLine();
 
@@ -126,18 +128,19 @@ public class Program {
 	                if (livrosEncontrados.isEmpty()) {
 	                    System.out.println("Nenhum livro encontrado com o título informado.\n");
 	                } else {
-	                    System.out.printf("%-6s%-25s%-25s%-25s%-20s%-15s%-15s%s%n", "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Gênero", "Formato");
+	                    System.out.printf("%-6s%-25s%-25s%-25s%-20s%-15s%-15s%s%n", "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas", "Formato", "Gênero");
 
 	                    for (Livro livro : livrosEncontrados) {
+	                        System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15s", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas());
 	                        if (livro instanceof LivroDigital) {
-	                            LivroDigital livroDigital = (LivroDigital) livro;
-	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15s%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), livroDigital.getFormatoD());
+	                        	LivroDigital livroDigital = (LivroDigital) livro;
+	                            System.out.printf("%-15s%-15s", livroDigital.getFormato(), livroDigital.getGenero());
 	                        } else {
-	                            System.out.printf("%-6d%-25s%-25s%-25s%-20s%-15s%-15s%-15s%n", livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAnoPubli(), livro.getNumeroPaginas(), livro.getGenero(), "-");
+	                            System.out.printf("%-15s%-15s", "-", "-");
 	                        }
+	                        System.out.println();
 	                    }
-	                    System.out.println();
-	                
+
 	                    System.out.println("\nDigite o ID do livro que deseja remover:");
 	                    int idRemocao = Integer.parseInt(read.nextLine());
 
@@ -151,48 +154,18 @@ public class Program {
 	                }
 	                
 	            } else if (opcao == 5) {
-	            	
 	            	System.out.println("Lista de Livros:");
-	            	biblioteca.listarLivros();
+	                biblioteca.listarLivros();
+	                System.out.println("\nDigite o ID do livro que deseja editar:\n");
+	                int idLivro = Integer.parseInt(read.nextLine());
 
-	            	System.out.println("\nDigite o ID do livro que deseja editar:");
-	            	int idLivro = read.nextInt();
+	                System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, paginas, formato, genero):");
+	                String opcaoEdicao = read.nextLine();
 
-	            	System.out.println("Digite 's' se o livro for digital ou 'n' caso contrário:");
-	            	String opcaoDigital = read.next();
+	                System.out.println("Digite o novo valor:");
+	                String novoValor = read.nextLine();
 
-	            	if (opcaoDigital.equalsIgnoreCase("s")) {
-	            	    System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, genero, formato, tamanho):");
-	            	    String opcaoEdicao = read.next();
-
-	            	    System.out.println("Digite o novo valor:");
-	            	    String novoValor = read.nextLine();
-	            	    novoValor = read.nextLine();
-
-	            	    LivroDigital livroDigital = (LivroDigital) biblioteca.getLivroById(idLivro);
-	            	    if (livroDigital != null) {
-	            	        biblioteca.editarLivroDigital(idLivro, opcaoEdicao, novoValor);
-	            	    } else {
-	            	        System.out.println("Livro digital não encontrado.");
-	            	    }
-	            	} else if (opcaoDigital.equalsIgnoreCase("n")) {
-	            	    System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, paginas, genero):");
-	            	    String opcaoEdicao = read.next();
-
-	            	    System.out.println("Digite o novo valor:");
-	            	    String novoValor = read.nextLine();
-	            	    novoValor = read.nextLine();
-
-	            	    Livro livro = biblioteca.getLivroById(idLivro);
-	            	    if (livro != null) {
-	            	        biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
-	            	    } else {
-	            	        System.out.println("Livro não encontrado.");
-	            	    }
-	            	} else {
-	            	    System.out.println("Opção inválida.");
-	            	}
-	              
+	                biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
 	                
 	            }else if (opcao == 6) {
 	            	 // Listar livros por atributo
@@ -201,7 +174,13 @@ public class Program {
 	                System.out.println("Digite o valor do atributo:");
 	                String valor = read.nextLine();
 	                biblioteca.listaratr(atributo, valor);
-	                }else if (opcao == 7) {
+	                }else if(opcao == 7) {
+	                	System.out.println("Digite o atributo pelo qual deseja procurar (titulo, autor, editora, ano, paginas, formato, genero):");
+		                String atributo = read.nextLine();
+		                System.out.println("Digite o valor do atributo:");
+		                String valor = read.nextLine();
+		                biblioteca.listarAtrLivroDigi(atributo, valor);
+	                }else if (opcao == 8) {
 	                System.out.println("Obrigado por utilizar a Biblioteca Java 2023 Unifacs. Até mais!");
 	                break;
 	            } else {
@@ -211,5 +190,6 @@ public class Program {
 
 	        read.close();
 	    }
-
 }
+
+
