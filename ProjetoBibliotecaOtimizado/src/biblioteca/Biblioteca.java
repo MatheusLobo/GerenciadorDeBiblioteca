@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 //Definição da classe Biblioteca
 public class Biblioteca {
-private ArrayList<Livro> livros; // Cria um ArrayList para armazenar os livros da biblioteca
+private static ArrayList<Livro> livros; // Cria um ArrayList para armazenar os livros da biblioteca
 private ArrayList<LivroDigital> livrosDigitais;
 
 //Construtor da classe Biblioteca
@@ -41,7 +41,14 @@ public boolean existeId(int id) {
   }
   return false; // O ID não foi encontrado na lista de livros
 }
-
+public static Livro getLivroPorId(int idLivro) {
+    for (Livro livro : livros) {
+        if (livro.getId() == idLivro) {
+            return livro;
+        }
+    }
+    return null; // Retorna null se nenhum livro for encontrado com o ID especificado
+}
 public int gerarNovoId() {
   Random random = new Random();
   int novoId = random.nextInt(10000) + 1; // Gera um número aleatório entre 1 e 10000
@@ -113,72 +120,87 @@ public void imprimirLivro(Livro livro) {
 	  System.out.println("\tNúmero de páginas: " + livro.getNumeroPaginas()); // Imprime o número de páginas do livro
 	}
 
-public void editarLivro(int id, String opcao, String novoValor) {
-	  for (Livro livro : livros) {
-	      if (livro.getId() == id) { // Verifica se o ID do livro corresponde ao ID fornecido
-	          if (livro instanceof LivroDigital) { // Verifica se o livro é do tipo LivroDigital
-	              LivroDigital livroDigital = (LivroDigital) livro; // Converte o livro para o tipo LivroDigital
-	              switch (opcao.toLowerCase()) { // Verifica a opção de edição
-	                  case "todos":
-	                      System.out.println("\nAlterando todas as informações do livro...\n");
-	                      livro.setTitulo(novoValor); // Atualiza o título do livro
-	                      livro.setAutor(novoValor); // Atualiza o autor do livro
-	                      livro.setEditora(novoValor); // Atualiza a editora do livro
-	                      livro.setAnoPubli(novoValor); // Atualiza o ano de publicação do livro
-	                      livro.setNumeroPaginas(novoValor); // Atualiza o número de páginas do livro
-	                      livroDigital.setFormato(novoValor); // Atualiza o formato do livro
-	                      livro.setGenero(novoValor); // Atualiza o gênero do livro
-	                      System.out.println("Todas as informações do livro foram atualizadas.");
-	                      
-	                      break;
-	                  case "titulo":
-	                      System.out.println("Alterando o título do livro...");
-	                      livro.setTitulo(novoValor); // Atualiza o título do livro
-	                      System.out.println("O título do livro foi atualizado.");
-	                      break;
-	                  case "autor":
-	                      System.out.println("Alterando o autor do livro...");
-	                      livro.setAutor(novoValor); // Atualiza o autor do livro
-	                      System.out.println("O autor do livro foi atualizado.");
-	                      break;
-	                  case "editora":
-	                      System.out.println("Alterando a editora do livro...");
-	                      livro.setEditora(novoValor); // Atualiza a editora do livro
-	                      System.out.println("A editora do livro foi atualizada.");
-	                      break;
-	                  case "ano":
-	                      System.out.println("Alterando o ano de publicação do livro...");
-	                      livro.setAnoPubli(novoValor); // Atualiza o ano de publicação do livro
-	                      System.out.println("O ano de publicação do livro foi atualizado.");
-	                      break;
-	                  case "paginas":
-	                      System.out.println("Alterando o número de páginas do livro...");
-	                      livro.setNumeroPaginas(novoValor); // Atualiza o número de páginas do livro
-	                      System.out.println("O número de páginas do livro foi atualizado.");
-	                      break;
-	                  case "formato":
-	                      System.out.println("Alterando o formato do livro...");
-	                      livroDigital.setFormato(novoValor); // Atualiza o formato do livro digital
-	                      System.out.println("O formato do livro foi atualizado.");
-	                      break;
-	                  case "genero":
-	                      System.out.println("Alterando o gênero do livro...");
-	                      livroDigital.setGenero(novoValor); // Atualiza o gênero do livro digital
-	                      System.out.println("O gênero do livro foi atualizado.");
-	                      break;
-	                  default:
-	                      System.out.println("Opção inválida."); // Opção de edição inválida
-	                      return;
-	              }
-	          } else {
-	              System.out.println("O livro não é do tipo LivroDigital."); // O livro não é do tipo LivroDigital
-	          }
-	          System.out.println("Livro editado com sucesso.");
-	          return;
-	      }
-	  }
-	  System.out.println("Livro não encontrado."); // Livro com o ID fornecido não encontrado
-	}
+
+public void editarTitulo(int idLivro, String novoValor) {
+    Livro livro = Biblioteca.getLivroPorId(idLivro);
+    if (livro != null) {
+        System.out.println("Alterando o título do livro...");
+        livro.setTitulo(novoValor);
+        System.out.println("O título do livro foi atualizado.");
+    } else {
+        System.out.println("Livro não encontrado.");
+    }
+}
+
+public void editarNumeroPaginas(int idLivro, String novoValor) {
+    Livro livro = Biblioteca.getLivroPorId(idLivro);
+    if (livro != null) {
+        System.out.println("Alterando o número de páginas do livro...");
+        livro.setNumeroPaginas(novoValor);
+        System.out.println("O número de páginas do livro foi atualizado.");
+    } else {
+        System.out.println("Livro não encontrado.");
+    }
+}
+public void editarAutor(int idLivro, String novoValor) {
+    Livro livro = Biblioteca.getLivroPorId(idLivro);
+    if (livro != null) {
+        System.out.println("Alterando o autor do livro...");
+        livro.setAutor(novoValor);
+        System.out.println("O autor do livro foi atualizado.");
+    } else {
+        System.out.println("Livro não encontrado.");
+    }
+}
+
+public void editarEditora(int idLivro, String novoValor) {
+    Livro livro = Biblioteca.getLivroPorId(idLivro);
+    if (livro != null) {
+        System.out.println("Alterando a editora do livro...");
+        livro.setEditora(novoValor);
+        System.out.println("A editora do livro foi atualizada.");
+    } else {
+        System.out.println("Livro não encontrado.");
+    }
+}
+
+public void editarAnoPublicacao(int idLivro, String novoValor) {
+    Livro livro = Biblioteca.getLivroPorId(idLivro);
+    if (livro != null) {
+        System.out.println("Alterando o ano de publicação do livro...");
+        livro.setAnoPubli(novoValor);
+        System.out.println("O ano de publicação do livro foi atualizado.");
+    } else {
+        System.out.println("Livro não encontrado.");
+    }
+}
+
+
+
+public void editarFormato(int idLivro, String novoValor) {
+    Livro livro = Biblioteca.getLivroPorId(idLivro);
+    if (livro instanceof LivroDigital) {
+        LivroDigital livroDigital = (LivroDigital) livro;
+        System.out.println("Alterando o formato do livro...");
+        livroDigital.setFormato(novoValor);
+        System.out.println("O formato do livro foi atualizado.");
+    } else {
+        System.out.println("O livro não é um livro digital.");
+    }
+}
+
+public void editarGenero(int idLivro, String novoValor) {
+    Livro livro = Biblioteca.getLivroPorId(idLivro);
+    if (livro instanceof LivroDigital) {
+        LivroDigital livroDigital = (LivroDigital) livro;
+        System.out.println("Alterando o gênero do livro...");
+        livroDigital.setGenero(novoValor);
+        System.out.println("O gênero do livro foi atualizado.");
+    } else {
+        System.out.println("O livro não é um livro digital.");
+    }
+}
+  
 
 //Lista os livros registrados com base no atributo e valor de busca fornecidos.
 public void listaratr(String atributo, String valorBusca) {

@@ -154,7 +154,7 @@ public class Program {
 	                }
 	                
 	            } else if (opcao == 5) {
-	            	System.out.println("Lista de Livros:");
+	                System.out.println("Lista de Livros:");
 	                biblioteca.listarLivros();
 	                System.out.println("\nDigite o ID do livro que deseja editar:\n");
 	                int idLivro = Integer.parseInt(read.nextLine());
@@ -162,12 +162,68 @@ public class Program {
 	                System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, paginas, formato, genero):");
 	                String opcaoEdicao = read.nextLine();
 
-	                System.out.println("Digite o novo valor:");
-	                String novoValor = read.nextLine();
+	                // System.out.println("Digite o novo valor:");
+	                            
+	                if (opcaoEdicao.toLowerCase().equals("todos")) {
+	                    String novoValor;
+	                    System.out.println("Digite o valor para o novo titulo");
+	                    novoValor = read.nextLine();
+	                    biblioteca.editarTitulo(idLivro, novoValor);
 
-	                biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
-	                
-	            }else if (opcao == 6) {
+	                    System.out.println("Digite o valor para o Autor");
+	                    novoValor = read.nextLine();
+	                    biblioteca.editarAutor(idLivro, novoValor);
+
+	                    System.out.println("Digite o valor para o novo Editora");
+	                    novoValor = read.nextLine();
+	                    biblioteca.editarEditora(idLivro, novoValor);
+
+	                    System.out.println("Digite o valor para o novo AnoPubli");
+	                    novoValor = read.nextLine();
+	                    biblioteca.editarAnoPublicacao(idLivro, novoValor);	
+	            	 
+	                    System.out.println("Digite o valor para o novo NumeroPaginas");
+	                    novoValor = read.nextLine();
+	                    biblioteca.editarNumeroPaginas(idLivro, novoValor);	    
+	                    System.out.println("Digite o valor para o novo Formato");
+	                    novoValor = read.nextLine();
+	                    biblioteca.editarFormato(idLivro, novoValor);	   
+	                    System.out.println("Digite o valor para o novo Genero");
+	                    novoValor = read.nextLine();
+	                    biblioteca.editarGenero(idLivro, novoValor);	
+	                } else {
+	                    System.out.println("Digite o novo valor");
+	                    String novoValor = read.nextLine();
+	                    switch (opcaoEdicao.toLowerCase()) {
+	                        case "titulo":
+	                            biblioteca.editarTitulo(idLivro, novoValor);
+	                            break;
+	                        case "autor":
+	                            biblioteca.editarAutor(idLivro, novoValor);
+	                            break;
+	                        case "editora":
+	                            biblioteca.editarEditora(idLivro, novoValor);
+	                            break;
+	                        case "ano":
+	                            biblioteca.editarAnoPublicacao(idLivro, novoValor);
+	                            break;
+	                        case "paginas":
+	                            biblioteca.editarNumeroPaginas(idLivro, novoValor);
+	                            break;
+	                        case "formato":
+	                            biblioteca.editarFormato(idLivro, novoValor);
+	                            break;
+	                        case "genero":
+	                            biblioteca.editarGenero(idLivro, novoValor);
+	                            break;
+	                        default:
+	                            System.out.println("Opção inválida.");
+	                            break;
+	                    }
+	                }
+	            
+   
+	                				   }else if (opcao == 6) {
 	            	 // Listar livros por atributo
 	                System.out.println("Digite o atributo pelo qual deseja procurar (titulo, autor, editora, ano, paginas, formato, genero):");
 	                String atributo = read.nextLine();
