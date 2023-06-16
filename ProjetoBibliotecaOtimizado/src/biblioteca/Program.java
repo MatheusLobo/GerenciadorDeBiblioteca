@@ -158,7 +158,7 @@ public class Program {
 	                biblioteca.listarLivros();
 	                System.out.println("\nDigite o ID do livro que deseja editar:\n");
 	                int idLivro = Integer.parseInt(read.nextLine());
-
+	                Livro livro = biblioteca.getLivroPorId(idLivro);
 	                System.out.println("Digite a opção que deseja editar (todos, titulo, autor, editora, ano, paginas, formato, genero):");
 	                String opcaoEdicao = read.nextLine();
 
@@ -184,13 +184,16 @@ public class Program {
 	            	 
 	                    System.out.println("Digite o valor para o novo NumeroPaginas");
 	                    novoValor = read.nextLine();
-	                    biblioteca.editarNumeroPaginas(idLivro, novoValor);	    
+	                    biblioteca.editarNumeroPaginas(idLivro, novoValor);	 
+	                   
+	                    
+	                  if (livro instanceof LivroDigital) {
 	                    System.out.println("Digite o valor para o novo Formato");
 	                    novoValor = read.nextLine();
 	                    biblioteca.editarFormato(idLivro, novoValor);	   
 	                    System.out.println("Digite o valor para o novo Genero");
 	                    novoValor = read.nextLine();
-	                    biblioteca.editarGenero(idLivro, novoValor);	
+	                    biblioteca.editarGenero(idLivro, novoValor);	}
 	                } else {
 	                    System.out.println("Digite o novo valor");
 	                    String novoValor = read.nextLine();

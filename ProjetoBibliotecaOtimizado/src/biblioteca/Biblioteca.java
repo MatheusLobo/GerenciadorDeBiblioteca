@@ -47,7 +47,7 @@ public static Livro getLivroPorId(int idLivro) {
             return livro;
         }
     }
-    return null; // Retorna null se nenhum livro for encontrado com o ID especificado
+    return null; // Retorna null caso não encontre o livro com o ID especificado
 }
 public int gerarNovoId() {
   Random random = new Random();
@@ -120,13 +120,19 @@ public void imprimirLivro(Livro livro) {
 	  System.out.println("\tNúmero de páginas: " + livro.getNumeroPaginas()); // Imprime o número de páginas do livro
 	}
 
-
 public void editarTitulo(int idLivro, String novoValor) {
     Livro livro = Biblioteca.getLivroPorId(idLivro);
     if (livro != null) {
         System.out.println("Alterando o título do livro...");
         livro.setTitulo(novoValor);
         System.out.println("O título do livro foi atualizado.");
+
+        if (livro instanceof LivroDigital) {
+            LivroDigital livroDigital = (LivroDigital) livro;
+            System.out.println("Alterando o título do livro digital...");
+            livroDigital.setTitulo(novoValor);
+            System.out.println("O título do livro digital foi atualizado.");
+        }
     } else {
         System.out.println("Livro não encontrado.");
     }
@@ -138,16 +144,31 @@ public void editarNumeroPaginas(int idLivro, String novoValor) {
         System.out.println("Alterando o número de páginas do livro...");
         livro.setNumeroPaginas(novoValor);
         System.out.println("O número de páginas do livro foi atualizado.");
+
+        if (livro instanceof LivroDigital) {
+            LivroDigital livroDigital = (LivroDigital) livro;
+            System.out.println("Alterando o número de páginas do livro digital...");
+            livroDigital.setNumeroPaginas(novoValor);
+            System.out.println("O número de páginas do livro digital foi atualizado.");
+        }
     } else {
         System.out.println("Livro não encontrado.");
     }
 }
+
 public void editarAutor(int idLivro, String novoValor) {
     Livro livro = Biblioteca.getLivroPorId(idLivro);
     if (livro != null) {
         System.out.println("Alterando o autor do livro...");
         livro.setAutor(novoValor);
         System.out.println("O autor do livro foi atualizado.");
+
+        if (livro instanceof LivroDigital) {
+            LivroDigital livroDigital = (LivroDigital) livro;
+            System.out.println("Alterando o autor do livro digital...");
+            livroDigital.setAutor(novoValor);
+            System.out.println("O autor do livro digital foi atualizado.");
+        }
     } else {
         System.out.println("Livro não encontrado.");
     }
@@ -159,6 +180,13 @@ public void editarEditora(int idLivro, String novoValor) {
         System.out.println("Alterando a editora do livro...");
         livro.setEditora(novoValor);
         System.out.println("A editora do livro foi atualizada.");
+
+        if (livro instanceof LivroDigital) {
+            LivroDigital livroDigital = (LivroDigital) livro;
+            System.out.println("Alterando a editora do livro digital...");
+            livroDigital.setEditora(novoValor);
+            System.out.println("A editora do livro digital foi atualizada.");
+        }
     } else {
         System.out.println("Livro não encontrado.");
     }
@@ -170,10 +198,18 @@ public void editarAnoPublicacao(int idLivro, String novoValor) {
         System.out.println("Alterando o ano de publicação do livro...");
         livro.setAnoPubli(novoValor);
         System.out.println("O ano de publicação do livro foi atualizado.");
+
+        if (livro instanceof LivroDigital) {
+            LivroDigital livroDigital = (LivroDigital) livro;
+            System.out.println("Alterando o ano de publicação do livro digital...");
+            livroDigital.setAnoPubli(novoValor);
+            System.out.println("O ano de publicação do livro digital foi atualizado.");
+        }
     } else {
         System.out.println("Livro não encontrado.");
     }
 }
+
 
 
 
