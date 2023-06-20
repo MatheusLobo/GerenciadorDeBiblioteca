@@ -1,31 +1,32 @@
 package biblioteca;
 
 
+
 public class LivroDigital extends Livro {
 	
-	private String formato;
-	private String tamanho;
+	private String tipoDoArquivo;
+	private double tamanho;
 	
-		public LivroDigital(String titulo, String autor, String editora, String ano_Publi, String numero_paginas,String genero, String formato, String tamanho ) {
-			super(titulo, autor, editora, ano_Publi, numero_paginas, genero);
-			setFormato(formato);
+		public LivroDigital(String titulo, String autor, String editora, String ano_Publi, String numero_paginas,String genero, String formato, String tipoDoArquivo, double tamanho ) {
+			super(titulo, autor, editora, ano_Publi, numero_paginas, genero, formato);
+			setTipoDoArquivo(tipoDoArquivo);
 			setTamanho(tamanho);
 			
 		}
 
-		public String getFormato() {
-			return formato;
+		public String getTipoDoArquivo() {
+			return tipoDoArquivo;
 		}
 
-		public void setFormato(String formato) {
-			this.formato = formato;
+		public void setTipoDoArquivo(String tipoDoArquivo) {
+			this.tipoDoArquivo = tipoDoArquivo;
 		}
 
-		public String getTamanho() {
+		public double getTamanho() {
 			return tamanho;
 		}
 
-		public void setTamanho(String tamanho) {
+		public void setTamanho(double tamanho) {
 			this.tamanho = tamanho;
 		}
 		
