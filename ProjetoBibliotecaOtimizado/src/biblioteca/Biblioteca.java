@@ -111,122 +111,132 @@ for (Livro livro : livros) {
 }
 return false; // Livro não encontrado
 }
+public void editarLivro(int id, String opcao, String novoValor) {
+    boolean livroEncontrado = false;
+    boolean livroFisico = false;
+    
+    for (Livro livro : livros) {
+        if (livro.getId() == id) {
+            livroEncontrado = true;
+            
+            if (livro instanceof LivroFisico) {
+                livroFisico = true;
+                
+                switch (opcao.toLowerCase()) {
+                    case "todos":
+                        System.out.println("\nAlterando todas as informações do livro...\n");
+                        editarTodasInformacoes(livro, novoValor);
+                        System.out.println("Todas as informações do livro físico foram atualizadas.");
+                        break;
+                    case "titulo":
+                        System.out.println("Alterando o título do livro...");
+                        livro.setTitulo(novoValor);
+                        System.out.println("O título do livro físico foi atualizado.");
+                        break;
+                    case "autor":
+                        System.out.println("Alterando o autor do livro...");
+                        livro.setAutor(novoValor);
+                        System.out.println("O autor do livro físico foi atualizado.");
+                        break;
+                    case "editora":
+                        System.out.println("Alterando a editora do livro...");
+                        livro.setEditora(novoValor);
+                        System.out.println("A editora do livro físico foi atualizada.");
+                        break;
+                    case "ano":
+                        System.out.println("Alterando o ano de publicação do livro...");
+                        livro.setAnoPubli(novoValor);
+                        System.out.println("O ano de publicação do livro físico foi atualizado.");
+                        break;
+                    case "paginas":
+                        System.out.println("Alterando o número de páginas do livro...");
+                        livro.setNumeroPaginas(novoValor);
+                        System.out.println("O número de páginas do livro físico foi atualizado.");
+                        break;
+                    case "genero":
+                        System.out.println("Alterando o gênero do livro...");
+                        livro.setGenero(novoValor);
+                        System.out.println("O gênero do livro físico foi atualizado.");
+                        break;
+                    default:
+                        System.out.println("Opção inválida.");
+                        return;
+                }
+            }
+            break;
+        }
+    }
+    
+    if (!livroEncontrado) {
+        System.out.println("Livro não encontrado.");
+    } else if (!livroFisico) {
+        System.out.println("O livro selecionado não é físico.");
+    }
+}
 
-public void editarLivroFisico(int id, String opcao, String novoValor) {
-	boolean livroEncontrado = false;
-	  for (Livro livro : livros) {
-		
-	      if(livro.getId() == id){// Verifica se o ID do livro corresponde ao ID fornecido
-	         // Converte o livro para o tipo LivroDigital
-	    	 livroEncontrado = true;
-	    	 
-	              switch (opcao.toLowerCase()) { // Verifica a opção de edição
-	                  case "todos":
-	                      System.out.println("\nAlterando todas as informações do livro...\n");
-	                      livro.setTitulo(novoValor); // Atualiza o título do livro
-	                      livro.setAutor(novoValor); // Atualiza o autor do livro
-	                      livro.setEditora(novoValor); // Atualiza a editora do livro
-	                      livro.setAnoPubli(novoValor); // Atualiza o ano de publicação do livro
-	                      livro.setNumeroPaginas(novoValor);// Atualiza o número de páginas do livro
-	                      livro.setGenero(novoValor); // Atualiza o gênero do livro
-	                      System.out.println("Todas as informações do livro foram atualizadas.");
-	                      break;
-	                  case "titulo":
-	                      System.out.println("Alterando o título do livro...");
-	                      livro.setTitulo(novoValor); // Atualiza o título do livro
-	                      System.out.println("O título do livro foi atualizado.");
-	                      break;
-	                  case "autor":
-	                      System.out.println("Alterando o autor do livro...");
-	                      livro.setAutor(novoValor); // Atualiza o autor do livro
-	                      System.out.println("O autor do livro foi atualizado.");
-	                      break;
-	                  case "editora":
-	                      System.out.println("Alterando a editora do livro...");
-	                      livro.setEditora(novoValor); // Atualiza a editora do livro
-	                      System.out.println("A editora do livro foi atualizada.");
-	                      break;
-	                  case "ano":
-	                      System.out.println("Alterando o ano de publicação do livro...");
-	                      livro.setAnoPubli(novoValor); // Atualiza o ano de publicação do livro
-	                      System.out.println("O ano de publicação do livro foi atualizado.");
-	                      break;
-	                  case "paginas":
-	                      System.out.println("Alterando o número de páginas do livro...");
-	                      livro.setNumeroPaginas(novoValor); // Atualiza o número de páginas do livro
-	                      System.out.println("O número de páginas do livro foi atualizado.");
-	                      break;
-	                  case "genero":
-	                      System.out.println("Alterando o gênero do livro...");
-	                      livro.setGenero(novoValor); // Atualiza o gênero do livro fisico
-	                      System.out.println("O gênero do livro foi atualizado.");
-	                      break;
-	                  default:
-	                      System.out.println("Opção inválida."); // Opção de edição inválida
-	                      return;
-	              }
-		      } 
-	  }
-	  if(livroEncontrado == false) {
-		  System.out.println("Livro Fisico não Encontrado");	  }
+public void editarTodasInformacoes(Livro livro, String novoValor) {
+    livro.setTitulo(novoValor);
+    livro.setAutor(novoValor);
+    livro.setEditora(novoValor);
+    livro.setAnoPubli(novoValor);
+    livro.setNumeroPaginas(novoValor);
+    livro.setGenero(novoValor);
 }
 
 public void editarLivroDigital(int id, String opcao, String novoValor) {
-	boolean livroEncontrado = false;
-	  for (LivroDigital livroDigital : livrosDigitais) {
-	      if(livroDigital.getId() == id){// Verifica se o ID do livro corresponde ao ID fornecido
-	    	  livroEncontrado = true;
-	              switch (opcao.toLowerCase()) { // Verifica a opção de edição
-	                  case "todos":
-	                      System.out.println("\nAlterando todas as informações do livro...\n");
-	                      livroDigital.setTitulo(novoValor); // Atualiza o título do livro
-	                      livroDigital.setAutor(novoValor); // Atualiza o autor do livro
-	                      livroDigital.setEditora(novoValor); // Atualiza a editora do livro
-	                      livroDigital.setAnoPubli(novoValor); // Atualiza o ano de publicação do livro
-	                      livroDigital.setNumeroPaginas(novoValor);// Atualiza o número de páginas do livro
-	                      livroDigital.setGenero(novoValor); // Atualiza o gênero do livro
-	                      System.out.println("Todas as informações do livro foram atualizadas.");
-	                      break;
-	                  case "titulo":
-	                      System.out.println("Alterando o título do livro...");
-	                      livroDigital.setTitulo(novoValor); // Atualiza o título do livro
-	                      System.out.println("O título do livro foi atualizado.");
-	                      break;
-	                  case "autor":
-	                      System.out.println("Alterando o autor do livro...");
-	                      livroDigital.setAutor(novoValor); // Atualiza o autor do livro
-	                      System.out.println("O autor do livro foi atualizado.");
-	                      break;
-	                  case "editora":
-	                      System.out.println("Alterando a editora do livro...");
-	                      livroDigital.setEditora(novoValor); // Atualiza a editora do livro
-	                      System.out.println("A editora do livro foi atualizada.");
-	                      break;
-	                  case "ano":
-	                      System.out.println("Alterando o ano de publicação do livro...");
-	                      livroDigital.setAnoPubli(novoValor); // Atualiza o ano de publicação do livro
-	                      System.out.println("O ano de publicação do livro foi atualizado.");
-	                      break;
-	                  case "paginas":
-	                      System.out.println("Alterando o número de páginas do livro...");
-	                      livroDigital.setNumeroPaginas(novoValor); // Atualiza o número de páginas do livro
-	                      System.out.println("O número de páginas do livro foi atualizado.");
-	                      break;  
-	                  case "genero":
-	                      System.out.println("Alterando o gênero do livro...");
-	                      livroDigital.setGenero(novoValor); // Atualiza o gênero do livro fisico
-	                      System.out.println("O gênero do livro foi atualizado.");
-	                      break;
-	                  default:
-	                      System.out.println("Opção inválida."); // Opção de edição inválida
-	                      return;
-	              }
-	      }
-	 // Livro com o ID fornecido não encontrado
-	  }
-	  if(livroEncontrado == false) {
-		  System.out.println("Livro Digital não Encontrado");
-	  }
+    boolean livroEncontrado = false;
+    
+    for (LivroDigital livroDigital : livrosDigitais) {
+        if (livroDigital.getId() == id) {
+            livroEncontrado = true;
+            
+            switch (opcao.toLowerCase()) {
+                case "todos":
+                    System.out.println("\nAlterando todas as informações do livro...\n");
+                    editarTodasInformacoes(livroDigital, novoValor);
+                    System.out.println("Todas as informações do livro digital foram atualizadas.");
+                    break;
+                case "titulo":
+                    System.out.println("Alterando o título do livro...");
+                    livroDigital.setTitulo(novoValor);
+                    System.out.println("O título do livro digital foi atualizado.");
+                    break;
+                case "autor":
+                    System.out.println("Alterando o autor do livro...");
+                    livroDigital.setAutor(novoValor);
+                    System.out.println("O autor do livro digital foi atualizado.");
+                    break;
+                case "editora":
+                    System.out.println("Alterando a editora do livro...");
+                    livroDigital.setEditora(novoValor);
+                    System.out.println("A editora do livro digital foi atualizada.");
+                    break;
+                case "ano":
+                    System.out.println("Alterando o ano de publicação do livro...");
+                    livroDigital.setAnoPubli(novoValor);
+                    System.out.println("O ano de publicação do livro digital foi atualizado.");
+                    break;
+                case "paginas":
+                    System.out.println("Alterando o número de páginas do livro...");
+                    livroDigital.setNumeroPaginas(novoValor);
+                    System.out.println("O número de páginas do livro digital foi atualizado.");
+                    break;
+                case "genero":
+                    System.out.println("Alterando o gênero do livro...");
+                    livroDigital.setGenero(novoValor);
+                    System.out.println("O gênero do livro digital foi atualizado.");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+                    return;
+            }
+            break;
+        }
+    }
+    
+    if (!livroEncontrado) {
+        System.out.println("Livro digital não encontrado.");
+    }
 }
 //Lista os livros registrados com base no atributo e valor de busca fornecidos.
 public void listaratr(String atributo, String valorBusca) {

@@ -163,7 +163,7 @@ public class Program {
 	                }
 	                
 	            } else if (opcao == 5) {
-	            	System.out.println("Lista de Livros:");
+	                System.out.println("Lista de Livros:");
 	                biblioteca.listarLivros();
 	                System.out.println("\nDigite o ID do livro Fisico que deseja editar:\n");
 	                int idLivro = Integer.parseInt(read.nextLine());
@@ -174,7 +174,8 @@ public class Program {
 	                System.out.println("Digite o novo valor:");
 	                String novoValor = read.nextLine();
 
-	                biblioteca.editarLivroFisico(idLivro, opcaoEdicao, novoValor);
+	                biblioteca.editarLivro(idLivro, opcaoEdicao, novoValor);
+	          
 	                
 	            }else if(opcao == 6) {
 	            	System.out.println("Lista de Livros:");
